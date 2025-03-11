@@ -7,6 +7,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visua
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
 
 vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-e>", ":")
+vim.keymap.set("i", "jj", "<Esc>")
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
 vim.keymap.set("n", "n", "nzzzv")
@@ -67,9 +70,9 @@ vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
-  local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
-  vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
-  print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
+    local filePath = vim.fn.expand("%:~")                -- Gets the file path relative to the home directory
+    vim.fn.setreg("+", filePath)                         -- Copy the file path to the clipboard register
+    print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
 
 -- Toggle LSP diagnostics visibility
@@ -81,4 +84,3 @@ vim.keymap.set("n", "<leader>lx", function()
         underline = isLspDiagnosticsVisible
     })
 end, { desc = "Toggle LSP diagnostics" })
-
