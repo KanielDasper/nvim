@@ -1,4 +1,4 @@
-require("daniel.core")
-require("daniel.lazy")
+require("opts.core")
+require("opts.lazy")
 require("current-theme")
-require("daniel.terminalpop")
+require("opts.terminalpop")
