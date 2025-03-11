@@ -8,11 +8,6 @@ return {
 
 		-- if Eslint error configuration not found : change MasonInstall eslint@version or npm i -g eslint at a specific version
 		lint.linters_by_ft = {
-			javascript = {},
-			typescript = {},
-			javascriptreact = {},
-			typescriptreact = {},
-			svelte = { "eslint_d" },
 			python = { "pylint" },
 		}
 
