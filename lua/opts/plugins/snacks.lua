@@ -116,6 +116,7 @@ return {
             { "<leader>es",  function() require("snacks").explorer() end,                                       desc = "Open Snacks Explorer" },
             { "<leader>rN",  function() require("snacks").rename.rename_file() end,                             desc = "Fast Rename Current File" },
             { "<leader>dB",  function() require("snacks").bufdelete() end,                                      desc = "Delete or Close Buffer  (Confirm)" },
+            { "<leader>,",   function() Snacks.picker.buffers() end,                                            desc = "Buffers" },
 
             -- Snacks Picker
             { "<leader>ff",  function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
