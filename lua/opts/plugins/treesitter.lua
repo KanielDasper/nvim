@@ -6,14 +6,20 @@ return {
         config = function()
             -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter.configs")
-
-            -- configure treesitter
             treesitter.setup({ -- enable syntax highlighting
                 highlight = {
                     enable = true,
+                    disable = { "neorg" }
                 },
+                modules = {},
                 -- enable indentation
                 indent = { enable = true },
+
+                -- Ignore these languages
+                ignore_install = {"neorg"},
+
+                auto_install = true,
+                sync_install = false,
 
                 -- ensure these languages parsers are installed
                 ensure_installed = {
