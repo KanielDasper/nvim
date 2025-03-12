@@ -1,35 +1,37 @@
 -- vim.g.loaded_netrw = 0
 -- vim.g.loaded_netrwPlugin = 0
 -- vim.cmd("let g:netrw_liststyle = 3")
+local o = vim.opt
 vim.cmd("let g:netrw_banner = 0 ")
 
-vim.opt.guicursor = ""
-vim.opt.nu = true
-vim.opt.relativenumber = true
+o.guicursor = ""
+o.nu = true
+o.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.wrap = false
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
+o.autoindent = true
+o.smartindent = true
+o.wrap = true
+o.cursorline = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+o.swapfile = false
+o.backup = false
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undofile = true
 
-vim.opt.incsearch = true
-vim.opt.inccommand = "split"
+o.incsearch = true
+o.inccommand = "split"
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
+o.termguicolors = true
+o.background = "dark"
 
-vim.opt.scrolloff = 10
+o.scrolloff = 10
 
 -- Enable folding ( setup in nvim-ufo )
 vim.o.foldenable = true     -- Enable folding by default
@@ -37,26 +39,24 @@ vim.o.foldmethod = "manual" -- Default fold method (change as needed)
 vim.o.foldlevel = 99        -- Open most folds by default
 vim.o.foldcolumn = "0"
 
--- backspace
-vim.opt.backspace = { "start", "eol", "indent" }
-
 --split windows
-vim.opt.splitright = true --split vertical window to the right
-vim.opt.splitbelow = true --split horizontal window to the bottom
+o.splitright = true --split vertical window to the right
+o.splitbelow = true --split horizontal window to the bottom
 
-vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
+o.isfname:append("@-@")
+o.updatetime = 50
 
 -- clipboard
-vim.opt.clipboard:append("unnamedplus") --use system clipboard as default
-vim.opt.hlsearch = true
+o.clipboard:append("unnamedplus") --use system clipboard as default
+o.hlsearch = true
 
 -- for easy mouse resizing, just incase
-vim.opt.mouse = "a"
+o.mouse = "a"
 
 -- gets rid of line with white spaces
 vim.g.editorconfig = true
 
+-- Set cwd to opened file
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     command = "silent! lcd %:p:h"
