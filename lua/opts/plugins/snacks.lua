@@ -11,7 +11,9 @@ return {
 			},
 			quickfile = {
 				enabled = true,
+				exclude = { "latex" },
 			},
+			-- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 			picker = {
 				enabled = true,
 				formatters = {
@@ -90,6 +92,13 @@ return {
 					require("snacks").picker.files({ cwd = vim.fn.stdpath("config") })
 				end,
 				desc = "Find Config File",
+			},
+			{
+				"<leader>fw",
+				function()
+					require("snacks").picker.files({ cwd = "~/Documents/Vimwiki/", layout = "ivy" })
+				end,
+				desc = "Find Vimwiki File",
 			},
 			{
 				"<leader>fg",
