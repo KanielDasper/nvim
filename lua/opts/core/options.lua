@@ -12,7 +12,6 @@ o.tabstop = 4
 o.softtabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
-o.autoindent = true
 o.smartindent = true
 o.wrap = true
 o.cursorline = true
@@ -22,7 +21,6 @@ o.backup = false
 o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 o.undofile = true
 
-o.incsearch = true
 o.inccommand = "split"
 
 o.ignorecase = true
@@ -48,13 +46,9 @@ o.updatetime = 50
 
 -- clipboard
 o.clipboard:append("unnamedplus") --use system clipboard as default
-o.hlsearch = true
 
 -- for easy mouse resizing, just incase
 o.mouse = "a"
-
--- gets rid of line with white spaces
-vim.g.editorconfig = true
 
 -- Set cwd to opened file
 vim.api.nvim_create_autocmd("BufEnter", {
