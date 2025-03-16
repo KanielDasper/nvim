@@ -31,7 +31,7 @@ o.smartcase = true
 o.termguicolors = true
 o.background = "dark"
 
-o.scrolloff = 10
+o.scrolloff = 15
 
 -- Enable folding ( setup in nvim-ufo )
 vim.o.foldenable = true     -- Enable folding by default
