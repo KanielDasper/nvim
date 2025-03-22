@@ -12,7 +12,7 @@ return {
 		},
 	},
 	config = function()
-        --HACK: Local variabels saved for LSP configuration
+		--HACK: Local variabels saved for LSP configuration
 		local lspconfig = require("lspconfig")
 		local capabilities = require("blink.cmp").get_lsp_capabilities() -- Import capabilities from blink.cmp
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -21,7 +21,7 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-        --NOTE: Autocmd for keymaps  
+		--NOTE: Autocmd for keymaps
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -30,7 +30,7 @@ return {
 				local opts = { buffer = ev.buf, silent = true }
 
 				opts.desc = "Show LSP references"
-				vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 
 				opts.desc = "Go to declaration"
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
@@ -50,7 +50,7 @@ return {
 				end, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
-				vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts) -- smart rename
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
 				opts.desc = "Show buffer diagnostics"
 				vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
@@ -77,7 +77,8 @@ return {
 		})
 
 		-- NOTE: If using Blink.cmp Configure all LSPs here
-		-- Configure lua_ls
+
+		-- Configure lua
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			settings = {
@@ -121,6 +122,6 @@ return {
 				},
 			},
 		})
-		-- Add other LSP servers as needed, e.g., gopls, eslint, html, etc.
+		-- Add other LSP servers as needed, e.g., gopls, clangd, html, etc.
 	end,
 }
