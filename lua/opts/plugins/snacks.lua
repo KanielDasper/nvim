@@ -9,6 +9,9 @@ return {
 			explorer = {
 				enabled = true,
 			},
+			image = {
+				enabled = false,
+			},
 			quickfile = {
 				enabled = true,
 				exclude = { "latex" },
@@ -50,7 +53,7 @@ return {
 				desc = "Lazygit Logs",
 			},
 			{
-				"<localleader>e",
+				"<leader>e",
 				function()
 					require("snacks").explorer()
 				end,
@@ -64,16 +67,16 @@ return {
 				desc = "Fast Rename Current File",
 			},
 			{
-				"<localleader>.",
+				"<leader>db",
 				function()
 					require("snacks").bufdelete()
 				end,
 				desc = "Delete or Close Buffer  (Confirm)",
 			},
 			{
-				"<leader>fb",
+				"<leader><leader>",
 				function()
-					Snacks.picker.buffers()
+					Snacks.picker.buffers({ layout = "ivy" })
 				end,
 				desc = "Buffers",
 			},

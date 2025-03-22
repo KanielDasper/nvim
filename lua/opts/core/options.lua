@@ -49,10 +49,3 @@ o.clipboard:append("unnamedplus") --use system clipboard as default
 
 -- for easy mouse resizing, just incase
 o.mouse = "a"
-
--- Set cwd to opened file
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    command = "silent! lcd %:p:h"
-})
-

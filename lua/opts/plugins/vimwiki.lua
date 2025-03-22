@@ -24,11 +24,12 @@ return {
 						"# " .. date,
 						"Back to [Diary Index](Diary)",
 						"",
-						"## Notes",
-						"",
 						"## Todo",
 						"",
-						"* [ ]"
+						"* [ ]",
+						"",
+						"## Notes",
+						""
 					}
 					vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, template)
 				end
