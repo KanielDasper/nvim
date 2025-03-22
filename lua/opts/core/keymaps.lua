@@ -25,7 +25,7 @@ vim.keymap.set("v", ">", ">>gv", opts)
 vim.keymap.set("n", "<", "<<g", opts)
 vim.keymap.set("n", ">", ">>g", opts)
 
--- Prevent x delete from affecting register
+-- Prevent x and d delete from affecting register
 vim.keymap.set("n", "x", '"_x', opts)
 vim.keymap.set("v", "p", '"_dp', opts)
 
@@ -33,7 +33,7 @@ vim.keymap.set("v", "p", '"_dp', opts)
 vim.keymap.set("n", "U", "<C-r>", opts)
 
 -- Clear search highlight
-vim.keymap.set("n", "<CR>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
+vim.keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 
 -- Unmaps Q in normal mode
 vim.keymap.set("n", "Q", "<nop>")
