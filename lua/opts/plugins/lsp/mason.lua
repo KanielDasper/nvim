@@ -42,7 +42,7 @@ return {
 				"stylua", -- lua formatter
 				"autopep8", -- python formatter
 				"isort", -- python formatter
-				"mypy",
+				"pylint", -- python linter
 				"clangd",
 			},
 		})
