@@ -72,6 +72,11 @@ return {
 				dap.step_out()
 			end, opts)
 
+			-- Keymap eval under cursor
+			vim.keymap.set("n", "<leader>?", function()
+				require("dapui").eval(nil, { enter = true })
+			end, opts)
+
 			-- Keymap to terminate debugging
 			vim.keymap.set("n", "<leader>dq", function()
 				require("dap").terminate()
