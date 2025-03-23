@@ -1,5 +1,9 @@
-# NVIM DOTFILES
-
+# NVIM CONFIG
 Configuration for my NVIM setup
 
-Shamelessly stolen from [https://github.com/Sin-cy/dotfiles/tree/main]
+Dependencies:
+
+- Neovim 0.10+
+- curl
+- git
+- Rust & Cargo

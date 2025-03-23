@@ -33,7 +33,7 @@ return {
 				},
 			},
 			dashboard = {
-				enabled = false,
+				enabled = true,
 			},
 		},
 		-- NOTE: Keymaps
