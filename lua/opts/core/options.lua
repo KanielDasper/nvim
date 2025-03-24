@@ -15,7 +15,7 @@ o.cursorline = true
 
 o.swapfile = false
 o.backup = false
-o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undodir = os.getenv("HOME") .. "/.config/vim/undodir"
 o.undofile = true
 
 o.inccommand = "split"
