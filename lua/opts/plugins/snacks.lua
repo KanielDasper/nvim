@@ -53,14 +53,7 @@ return {
 				desc = "Lazygit Logs",
 			},
 			{
-				"<leader>e",
-				function()
-					require("snacks").explorer()
-				end,
-				desc = "Open Snacks Explorer",
-			},
-			{
-				"<localleader>r",
+				"<localleader>rf",
 				function()
 					require("snacks").rename.rename_file()
 				end,
@@ -76,7 +69,7 @@ return {
 			{
 				"<leader><leader>",
 				function()
-					Snacks.picker.buffers({ layout = "ivy" })
+					require("snacks").picker.buffers({ layout = "ivy" })
 				end,
 				desc = "Buffers",
 			},
@@ -121,7 +114,7 @@ return {
 			{
 				"<leader>fk",
 				function()
-					require("snacks").picker.keymaps({ layout = "ivy" })
+					require("snacks").picker.keymaps({ layout = "select" })
 				end,
 				desc = "Search Keymaps (Snacks Picker)",
 			},
@@ -153,7 +146,7 @@ return {
 			{
 				"<leader>z",
 				function()
-					Snacks.zen()
+					require("snacks").zen()
 				end,
 				desc = "Toggle Zen Mode",
 			},

@@ -72,6 +72,10 @@ return {
 				dap.step_out()
 			end, opts)
 
+			vim.keymap.set("n", "<leader>B", function()
+				dap.toggle_breakpoint(vim.fn.input("Breakpoint condition: "))
+			end, opts)
+
 			-- Keymap eval under cursor
 			vim.keymap.set("n", "<leader>?", function()
 				require("dapui").eval(nil, { enter = true })
