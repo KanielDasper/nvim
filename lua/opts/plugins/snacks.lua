@@ -35,9 +35,19 @@ return {
 			dashboard = {
 				enabled = true,
 			},
+			scratch = {
+				enabled = true,
+			},
 		},
 		-- NOTE: Keymaps
 		keys = {
+			{
+				"<leader>.",
+				function()
+					require("snacks").scratch()
+				end,
+				desc = "Toggle Scratch Buffer",
+			},
 			{
 				"<leader>lg",
 				function()
