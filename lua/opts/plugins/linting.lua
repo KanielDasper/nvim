@@ -8,11 +8,11 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			python = { "pylint" },
+			python = { "ruff" },
 		}
 		-- Set pylint to work in virtualenv
-		lint.linters.pylint.cmd = "python"
-		lint.linters.pylint.args = { "-m", "pylint", "-f", "json" }
+		-- lint.linters.pylint.cmd = "python"
+		-- lint.linters.pylint.args = { "-m", "pylint", "-f", "json" }
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
@@ -22,10 +22,10 @@ return {
 				lint.try_lint()
 			end,
 		})
-		vim.keymap.set("n", "<leader>ll", function()
-			lint.try_lint()
-		end, { desc = "Trigger linting for current file" })
-		-- Toggle linting and LSP diagnostics visibility
+		-- vim.keymap.set("n", "<leader>ll", function()
+		-- 	lint.try_lint()
+		-- end, { desc = "Trigger linting for current file" })
+		-- NOTE: Toggle linting and LSP diagnostics visibility
 		local isLspDiagnosticsVisible = true
 		vim.keymap.set("n", "<leader>lx", function()
 			isLspDiagnosticsVisible = not isLspDiagnosticsVisible
@@ -33,6 +33,6 @@ return {
 				virtual_text = isLspDiagnosticsVisible,
 				underline = isLspDiagnosticsVisible,
 			})
-		end, { desc = "Toggle LSP diagnostics" })
+		end, { desc = "Toggle LSP diagnostics and linter" })
 	end,
 }
