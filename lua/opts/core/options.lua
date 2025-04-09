@@ -1,32 +1,32 @@
-local o = vim.opt
+local opt = vim.opt
 vim.cmd("let g:netrw_banner = 0 ")
 
-o.guicursor = ""
-o.nu = true
-o.relativenumber = true
+opt.guicursor = ""
+opt.nu = true
+opt.relativenumber = true
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
-o.smartindent = true
-o.wrap = true
-o.cursorline = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+opt.wrap = true
+opt.cursorline = true
 
-o.swapfile = false
-o.backup = false
-o.undodir = os.getenv("HOME") .. "/.config/vim/undodir"
-o.undofile = true
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.config/vim/undodir"
+opt.undofile = true
 
-o.inccommand = "split"
+opt.inccommand = "split"
 
-o.ignorecase = true
-o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
-o.termguicolors = true
-o.background = "dark"
+opt.termguicolors = true
+opt.background = "dark"
 
-o.scrolloff = 15
+opt.scrolloff = 15
 
 -- Enable folding ( setup in nvim-ufo )
 vim.o.foldenable = true -- Enable folding by default
@@ -35,14 +35,14 @@ vim.o.foldlevel = 99 -- Open most folds by default
 vim.o.foldcolumn = "0"
 
 --split windows
-o.splitright = true --split vertical window to the right
-o.splitbelow = true --split horizontal window to the bottom
+opt.splitright = true --split vertical window to the right
+opt.splitbelow = true --split horizontal window to the bottom
 
-o.isfname:append("@-@")
-o.updatetime = 50
+opt.isfname:append("@-@")
+opt.updatetime = 50
 
 -- clipboard
-o.clipboard:append("unnamedplus") --use system clipboard as default
+opt.clipboard:append("unnamedplus") --use system clipboard as default
 
 -- for easy mouse resizing, just incase
-o.mouse = "a"
+opt.mouse = "a"
