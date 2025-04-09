@@ -65,4 +65,4 @@ end
 
 vim.api.nvim_create_user_command("Terminalpop", pop_terminal, {})
 
-vim.keymap.set({ "n", "t" }, "<localleader>.", pop_terminal)
+vim.keymap.set({ "n", "t" }, "<leader>t", pop_terminal)

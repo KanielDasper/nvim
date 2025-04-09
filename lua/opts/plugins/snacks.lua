@@ -1,3 +1,5 @@
+local scratch_path = os.getenv("HOME") .. "/notes/scratch"
+
 return {
 	-- HACK: docs @ https://github.com/folke/snacks.nvim/blob/main/docs
 	{
@@ -6,16 +8,10 @@ return {
 		lazy = false,
 		-- NOTE: Options
 		opts = {
-			explorer = {
-				enabled = true,
-			},
-			image = {
-				enabled = false,
-			},
-			quickfile = {
-				enabled = true,
-				exclude = { "latex" },
-			},
+			explorer = { enabled = true },
+			bigfile = { enabled = true },
+			image = { enabled = false },
+			quickfile = { enabled = true },
 			-- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 			picker = {
 				enabled = true,
@@ -67,9 +63,24 @@ return {
 			{
 				"<leader>.",
 				function()
-					require("snacks").scratch()
+					vim.ui.input({
+						prompt = "Enter scratch buffer title: ",
+						default = "",
+					}, function(t)
+						if not vim.fn.isdirectory(scratch_path) then
+							vim.fn.mkdir(scratch_path, "p")
+						end
+
+						local title = t ~= "" and t:gsub("%s+", "_") or "Untitled"
+						require("snacks").scratch.open({
+							ft = "markdown",
+							name = title .. "_" .. os.date("%Y-%m-%d-%H-%M-%S"),
+							win = {
+								title = title,
+							},
+						})
+					end)
 				end,
-				desc = "Toggle Scratch Buffer",
 			},
 			{
 				"<leader>lg",
@@ -162,13 +173,6 @@ return {
 			},
 
 			-- Other Utils
-			{
-				"<leader>th",
-				function()
-					require("snacks").picker.colorschemes({ layout = "ivy" })
-				end,
-				desc = "Pick Color Schemes",
-			},
 			{
 				"<leader>vh",
 				function()
