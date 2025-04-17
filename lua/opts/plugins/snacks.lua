@@ -122,7 +122,7 @@ return {
 			{
 				"<leader>fw",
 				function()
-					require("snacks").picker.files({ cwd = "~/Documents/Vimwiki/", layout = "ivy" })
+					require("snacks").picker.files({ cwd = "~/Documents/Vimwiki/" })
 				end,
 				desc = "Find Vimwiki File",
 			},
@@ -160,9 +160,9 @@ return {
 
 			-- Other Utils
 			{
-				"<leader>vh",
+				"<leader>fh",
 				function()
-					require("snacks").picker.help({ layout = "ivy" })
+					require("snacks").picker.help()
 				end,
 				desc = "Help Pages",
 			},
@@ -172,21 +172,6 @@ return {
 					require("snacks").zen()
 				end,
 				desc = "Toggle Zen Mode",
-			},
-		},
-	},
-	-- NOTE: todo comments w/ snacks
-	{
-		"folke/todo-comments.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		optional = true,
-		keys = {
-			{
-				"<leader>ft",
-				function()
-					require("snacks").picker.todo_comments({ layout = "ivy" })
-				end,
-				desc = "Todo",
 			},
 		},
 	},
