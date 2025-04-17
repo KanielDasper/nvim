@@ -12,16 +12,22 @@ return {
 		},
 	},
 	config = function()
-		--HACK: Local variabels saved for LSP configuration
 		local lspconfig = require("lspconfig")
-		local capabilities = require("blink.cmp").get_lsp_capabilities() -- Import capabilities from blink.cmp
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- Import completion capabilities from blink.cmp
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- Diagnostic signs
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+		})
 
-		--NOTE: Autocmd for keymaps
+		-- Autocmd for keymaps
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -36,13 +42,13 @@ return {
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 				opts.desc = "Show LSP definitions"
-				vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+				vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<CR>", opts)
 
 				opts.desc = "Show LSP implementations"
-				vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+				vim.keymap.set("n", "gi", "<cmd>Trouble lsp_implementations<CR>", opts)
 
 				opts.desc = "Show LSP type definitions"
-				vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+				vim.keymap.set("n", "gt", "<cmd>Trouble lsp_type_definitions<CR>", opts)
 
 				opts.desc = "See available code actions, only applied selection in visual mode"
 				vim.keymap.set({ "n", "v" }, "<leader>ca", function()
@@ -53,16 +59,10 @@ return {
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Show buffer diagnostics"
-				vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+				vim.keymap.set("n", "<leader>D", "<cmd>Trouble diagnostics bufnr=0<CR>", opts)
 
 				opts.desc = "Show line diagnostics"
 				vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-				opts.desc = "Go to previous diagnostic"
-				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-				opts.desc = "Go to next diagnostic"
-				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 				opts.desc = "Show documentation on hover"
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
