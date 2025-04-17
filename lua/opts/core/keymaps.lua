@@ -4,6 +4,10 @@ vim.g.maplocalleader = ","
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- wincmd opts
+keymap("n", "<C-w>t", ":tabnew<CR>", { desc = "Open new tab" })
+keymap("n", "<C-w>e", ":enew<CR>", { desc = "Open new buffer" })
+
 -- yanking
 keymap("n", "<localleader>q", ":registers<CR>", { desc = "Show registers" })
 keymap("n", "<leader>y", ":%y+<CR>", { desc = "Yank the whole buffer" })

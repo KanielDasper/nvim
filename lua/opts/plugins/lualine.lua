@@ -1,34 +1,3 @@
--- codeium status function
-local function codeium()
-	local status = vim.api.nvim_call_function("codeium#GetStatusString", {}):lower():gsub("%s+", "")
-	local status_color
-	local display_text
-
-	-- codeium status logic
-	if status == "on" then
-		status_color = "%#LualineAIOn#"
-		display_text = "󰚩 ON"
-	elseif status == "off" then
-		status_color = "%#LualineAIOff#"
-		display_text = "󰚩 OFF" --
-	elseif status:match("^%d+/%d+$") then
-		status_color = "%#LualineAIOn#"
-		display_text = "󰚩 " .. status
-	elseif status == "0" then
-		status_color = "%#LualineAIOff#"
-		display_text = "󰚩 No suggestions"
-	elseif status == "*" then
-		status_color = "%#LualineAIOff#"
-		display_text = "󰚩 Waiting..."
-	else
-		status_color = "%#LualineAIOff#"
-		display_text = "󰚩 Unknown"
-	end
-
-	return string.format("%s%s%%#Normal#", status_color, display_text)
-end
-
--- Lualine config
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -55,7 +24,7 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "filename", codeium },
+				lualine_b = { "filename" },
 				lualine_c = { "branch", "diff", "diagnostics" },
 				lualine_x = { "encoding", "fileformat", "filetype" },
 				lualine_y = { "progress" },
