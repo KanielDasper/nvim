@@ -4,16 +4,17 @@ return {
 	config = function()
 		local opts = { noremap = true }
 		local keymap = vim.keymap.set
-		local buf_manager = require("buffer_manager")
-		local bmui = require("buffer_manager.ui")
+		local buffer_manager = require("buffer_manager")
 		-- Setup
-		buf_manager.setup({
+		buffer_manager.setup({
 			select_menu_item_commands = {
 				v = {
 					key = "<C-v>",
 					command = "vsplit",
 				},
 			},
+			height = 0.4,
+			width = 0.6,
 			show_indicators = "after",
 			focus_alternate_buffer = false,
 			short_file_names = true,
@@ -26,6 +27,7 @@ return {
 		})
 		-- Navigate buffers bypassing the menu using keys
 		local keys = "1234567890"
+		local bmui = require("buffer_manager.ui")
 		for i = 1, #keys do
 			local key = keys:sub(i, i)
 			keymap("n", string.format("<leader>%s", key), function()
@@ -40,7 +42,7 @@ return {
 			pattern = "buffer_manager",
 			callback = function()
 				-- Move buffers up and down in the number select menu
-				keymap("n", "j", ":m .+1<cr>==", { buffer = true, silent = true })
+				keymap("n", "J", ":m .+1<cr>==", { buffer = true, silent = true })
 				keymap("n", "K", ":m .-2<CR>==", { buffer = true, silent = true })
 			end,
 			-- Highlight green for modified
