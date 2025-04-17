@@ -4,9 +4,6 @@ vim.g.maplocalleader = ","
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Run lua and source file
-keymap("n", "J", "mzJ`z", { desc = "Join line below" })
-
 -- yanking
 keymap("n", "<localleader>q", ":registers<CR>", { desc = "Show registers" })
 keymap("n", "<leader>y", ":%y+<CR>", { desc = "Yank the whole buffer" })
@@ -46,9 +43,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })
+
+-- Toggeable diff between two open windows
+keymap("n", "<leader>dv", function()
+	local is_diff = vim.wo.diff
+	if is_diff then
+		vim.cmd("windo diffoff")
+	else
+		vim.cmd("windo diffthis")
+	end
+end, { desc = "Toggle diffview with windo" })
 
 -- Copy filepath to the clipboard
 keymap("n", "<localleader>d", function()

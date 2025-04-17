@@ -1,5 +1,5 @@
 -- Terminal Float State (taught by tj)
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+vim.keymap.set("t", "<C-e>", "<c-\\><c-n>")
 
 local state = {
 	floating = {
