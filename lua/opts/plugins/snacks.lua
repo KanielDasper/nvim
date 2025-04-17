@@ -103,20 +103,6 @@ return {
 				end,
 				desc = "Fast Rename Current File",
 			},
-			{
-				"<leader>db",
-				function()
-					require("snacks").bufdelete()
-				end,
-				desc = "Delete or Close Buffer  (Confirm)",
-			},
-			{
-				"<leader><leader>",
-				function()
-					require("snacks").picker.buffers({ layout = "ivy" })
-				end,
-				desc = "Buffers",
-			},
 
 			-- Snacks Picker
 			{
