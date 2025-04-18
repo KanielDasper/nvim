@@ -2,7 +2,7 @@ local opt = vim.opt
 vim.cmd("let g:netrw_banner = 0 ")
 
 opt.guicursor = ""
-opt.nu = true
+opt.number = true
 opt.relativenumber = true
 
 opt.tabstop = 4
