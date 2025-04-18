@@ -1,5 +1,5 @@
 -- Terminal Float State (taught by tj)
-vim.keymap.set("t", "<C-e>", "<c-\\><c-n>")
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 local state = {
 	floating = {
@@ -65,4 +65,6 @@ end
 
 vim.api.nvim_create_user_command("Terminalpop", pop_terminal, {})
 
-vim.keymap.set({ "n", "t" }, "<leader>t", pop_terminal)
+-- Two keymaps just because its nice that spacebar gets triggered properly when writing in terminal
+vim.keymap.set({ "n" }, "<leader>t", pop_terminal)
+vim.keymap.set({ "t", "n" }, "<localleader><esc>", pop_terminal)

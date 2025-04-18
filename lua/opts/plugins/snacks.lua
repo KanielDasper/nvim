@@ -10,9 +10,7 @@ return {
 		opts = {
 			explorer = { enabled = true },
 			bigfile = { enabled = true },
-			image = { enabled = false },
-			quickfile = { enabled = true },
-			-- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+			image = { enabled = true },
 			picker = {
 				enabled = true,
 				formatters = {
@@ -24,8 +22,7 @@ return {
 				},
 				layout = {
 					-- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
-					-- override picker layout in keymaps function as a param below
-					preset = "default", -- defaults to this layout unless overidden
+					preset = "default",
 				},
 			},
 			dashboard = {
@@ -61,28 +58,6 @@ return {
 		-- NOTE: Keymaps
 		keys = {
 			{
-				"<leader>.",
-				function()
-					vim.ui.input({
-						prompt = "Enter scratch buffer title: ",
-						default = "",
-					}, function(t)
-						if not vim.fn.isdirectory(scratch_path) then
-							vim.fn.mkdir(scratch_path, "p")
-						end
-
-						local title = t ~= "" and t:gsub("%s+", "_") or "Untitled"
-						require("snacks").scratch.open({
-							ft = "markdown",
-							name = title .. "_" .. os.date("%Y-%m-%d-%H-%M-%S"),
-							win = {
-								title = title,
-							},
-						})
-					end)
-				end,
-			},
-			{
 				"<leader>lg",
 				function()
 					require("snacks").lazygit()
@@ -90,7 +65,7 @@ return {
 				desc = "Lazygit",
 			},
 			{
-				"<leader>gl",
+				"<leader>ll",
 				function()
 					require("snacks").lazygit.log()
 				end,

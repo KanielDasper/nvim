@@ -49,6 +49,9 @@ return {
 				opts.desc = "Show LSP diagnostics"
 				keymap("n", "<leader>dd", "<cmd>Trouble diagnostics filter.buf=0<CR>", opts)
 
+				opts.desc = "Show LSP workspace diagnostics"
+				keymap("n", "<leader>xx", "<cmd>Trouble diagnostics<CR>", opts)
+
 				opts.desc = "Show LSP definitions"
 				keymap("n", "gd", "<cmd>Trouble lsp_definitions<CR>", opts)
 

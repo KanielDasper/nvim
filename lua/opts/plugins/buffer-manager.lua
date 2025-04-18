@@ -35,7 +35,7 @@ return {
 			end, opts)
 		end
 		-- Just the menu
-		keymap({ "t", "n" }, "<leader><leader>", bmui.toggle_quick_menu, opts)
+		keymap({ "n" }, "<leader><leader>", bmui.toggle_quick_menu, opts)
 
 		-- autocmd for moving buffers
 		vim.api.nvim_create_autocmd("FileType", {
